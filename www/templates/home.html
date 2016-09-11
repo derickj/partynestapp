@@ -1,0 +1,46 @@
+<ion-view view-title="Home" class="barcolor">
+  <ion-content>
+    <div class="card">    
+        <div ng-if="!showFeatured">
+                    <h3>{{featuredmsg}}</h3>
+        </div>
+        <div ng-if="showFeatured">
+            <h3 align=center>Trending</h3>
+            <a class="item item-thumbnail-left" ui-sref="app.productdetail({id: featured.id})">
+            <img ng-src={{featured.image}} alt="{{featured.name}}">
+                <h3>{{featured.name}}</h3>
+                <p>{{featured.unitprice | currency:"R"}}</p>
+                <p>{{featured.description}}</p>
+            </a>
+        </div>
+    </div>
+    <div class="card"> 
+        <div ng-if="!showMsg">      
+          <p>Lollipop jelly beans chocolate bar cupcake jujubes candy canes jelly fruitcake biscuit. Apple pie chupa chups biscuit jelly beans donut dragée. Tart gummies sesame snaps.</p>
+          <p>Cheesecake topping brownie chocolate cake gummies icing muffin. Muffin liquorice caramels. Icing carrot cake soufflé.</p>
+          <p>Muffin pie halvah macaroon marzipan marzipan cake cotton candy pie. Fruitcake liquorice danish chocolate toffee liquorice gummies. Wafer ice cream cookie. Icing dessert candy canes sweet jelly-o fruitcake cupcake.</p>
+        </div>
+        <div ng-model="message" ng-if="showMsg">
+            <h3>Parties are fun!!!!</h3>
+            <p>{{message.msg}}</p>
+        </div>
+    </div>
+    <div class="card">
+        <h3 align=center>What's New</h3>
+        <div class="row">
+        <div class="col" ng-if="showFeatured" ng-repeat="prod in featureds">
+                <a class="item item-thumbnail-left" ui-sref="app.productdetail({id: prod.productId})">
+                    <img ng-src={{prod.product.image}} alt="{{prod.product.name}}">
+                </a>
+        </div>
+        </div>
+    </div>
+    <div class="card">
+        <blockquote>
+            <p>There is no seven wonders of the world in the eyes of a child. There are seven million.</p>
+            <footer>Walt Streightiff  
+            <cite title="Source Title"> http://www.thefreshquotes.com/funny-children-quotes</cite></footer>
+        </blockquote>        
+    </div>
+  </ion-content>
+</ion-view>

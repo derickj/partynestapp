@@ -1,0 +1,48 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-positive">
+    <h1 class="title">Register</h1>
+    <div class="buttons">
+      <button class="button button-light" ng-click="closeRegister()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form name="regForm" ng-submit="doRegister()" novalidate >
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">First Name</span>
+          <input type="text" name="firstname" ng-model="registration.firstname" required>
+        </label>
+         <label class="item item-input">
+          <span class="input-label">Last Name</span>
+          <input type="text" name="lastname" ng-model="registration.lastname" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Contact Tel</span>
+          <input type="tel" name="telno" ng-minlength="7" ng-model="registration.telno" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Email</span>
+          <input type="email" name="email" ng-model="registration.email" required>
+        </label>
+         <label class="item item-input">
+          <span class="input-label">Username</span>
+          <input type="text" name="username" ng-minlength="5" ng-maxlength="8" ng-model="registration.username" required>
+        </label>
+       <label class="item item-input">
+          <span class="input-label">Password</span>
+          <input type="password" name="password" ng-minlength="5" ng-maxlength="8" ng-model="registration.password" required>
+        </label>
+        <div class="padding" ng-if="regForm.$invalid && !regForm.$pristine">
+            <p>* All fields are required</p>
+            <p ng-show="regForm.telno.$invalid && !regForm.telno.$pristine">* Tel no must be at least 7 digits</p>
+            <p ng-show="regForm.email.$invalid && !regForm.email.$pristine">* E-mail must be a valid email address</p>
+            <p ng-show="regForm.username.$invalid && !regForm.username.$pristine">* Username must be 5 to 8 characters</p>
+            <p ng-show="regForm.password.$invalid && !regForm.password.$pristine">* Password must be 5 to 8 characters</p>
+        </div>
+        <label class="item">
+          <button class="button button-block button-positive" ng-disabled="regForm.$invalid" type="submit">Register</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

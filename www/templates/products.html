@@ -1,0 +1,29 @@
+<ion-view view-title="Products" class="barcolor">
+  <ion-content>
+      <div class="row" ng-if="!showProducts">
+          <h3>{{message}}</h3>
+      </div>
+      <div class="row">      
+          <div ng-if="showProducts">
+              <h3>Theme filter</h3>
+              <div class="radio">
+                  <label><input type="radio" ng-model="filtText" value="" ng-click="updateFilter('')">All</label>
+              </div>
+              <div class="radio" ng-repeat="theme in themes">
+                    <label>
+                    <input type="radio" ng-model="$parent.filtText" value="{{theme.name}}" ng-click="updateFilter(theme.name)")>
+                        {{theme.name}}
+                    </label>
+              </div>
+          </div>
+      </div>    
+      <div class = "row">
+          <div class="col" ng-if="showProducts" ng-repeat="prod in products | filter:{ description: filtText }">
+                <a class="item item-thumbnail-left" ui-sref="app.productdetail({id: prod.id})">
+                    <img ng-src={{prod.image}} alt="{{prod.name}}">
+                </a>
+              <p>{{prod.name}}</p>
+          </div>
+      </div>
+  </ion-content>
+</ion-view>

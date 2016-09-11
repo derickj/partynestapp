@@ -1,0 +1,48 @@
+<ion-view view-title="Product Detail" class="barcolor">
+  <ion-content>
+      <div class="list card" ng-if="!showProduct">
+          <h3>{{message}}</h3>
+      </div>
+      <div class="list card" ng-if="showProduct">
+          <div class="item item-avatar">
+              <img ng-src={{product.image}}>
+              <h2>{{product.name}}</h2>
+          </div>
+              <a class="item" href="#">
+                <img class="full-image" ng-src={{product.image}} alt="{{product.name}}">
+              </a>
+              <p>{{product.label}} {{product.unitprice | currency:"R"}}</p>
+              <p>{{product.description}}</p>
+              <div ng-if="loggedIn">
+                    <div class="row">
+                    <div class="col">
+                        <button class="button button-block button-small button-balanced"
+                        type="button" ng-click="addToWishlist(product.id)">
+                        <i class="icon ion-heart"></i> Add                     
+                        </button>
+                    </div>
+                    <div class="col">
+                        <button class="button button-block button-small button-calm"
+                        type="button" ng-click="showReviewForm(product.id)">
+                        <i class="icon ion-edit"></i> Add Review                   
+                        </button>
+                    </div>
+                    </div>
+                </div>
+      </div>
+      <div class="row" ng-if="showProduct">
+          <div class="col col-offset-10">
+              <h4>Customer Reviews &nbsp;&nbsp;&nbsp;</h4>
+                    <ul class="list">
+                        <li ng-repeat="review in reviews">
+                          <blockquote>
+                             <p>{{review.rating}} Stars</p>
+                             <p>{{review.review}}</p>
+                             <footer>{{review.author}}, {{review.createdAt | date : "MMM. dd,yyyy"}}</footer>
+                          </blockquote>
+                        </li>
+                    </ul>
+            </div>
+      </div>
+  </ion-content>
+</ion-view>

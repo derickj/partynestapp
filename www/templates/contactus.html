@@ -1,0 +1,41 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-calm">
+    <h1 class="title">Contact Us</h1>
+    <div class="buttons">
+      <button class="button button-light" ng-click="closeContactForm()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form name="contactForm" ng-submit="sendFeedback()" novalidate>
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">First Name</span>
+          <input type="text" name="firstname" ng-model="feedback.firstName" required>
+        </label>
+         <label class="item item-input">
+          <span class="input-label">Last Name</span>
+          <input type="text" name="lastname" ng-model="feedback.lastName" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Contact Tel</span>
+          <input type="tel" name="telno" ng-minlength="7" ng-model="feedback.telno" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Email</span>
+          <input type="email" name="email" ng-model="feedback.email" required>
+        </label>
+        <label class="item item-input">
+            <textarea type="text" name="feedback" ng-model="feedback.feedback" rows="4" placeholder="Enter request here" required>></textarea>
+        </label>
+        <div class="padding" ng-if="!contactForm.$pristine">
+            <p>* All fields are required</p>
+            <p ng-show="contactForm.telno.$invalid && !contactForm.telno.$pristine">* Tel no must be at least 7 digits</p>
+            <p ng-show="contactForm.email.$invalid && !contactForm.email.$pristine">* E-mail must be a valid email address</p>
+        </div>
+        <label class="item">
+          <button class="button button-block button-positive" ng-disabled="contactForm.$invalid" type="submit">Send</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

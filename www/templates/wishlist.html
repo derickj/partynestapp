@@ -1,0 +1,29 @@
+<ion-view view-title="My Wishlist"  class="barcolor">
+  <ion-content>
+    <div ng-if="!loggedIn">
+        <p>You must be logged in to view your wishlist.</p>
+    </div>
+    <div ng-if="!showWishlist && loggedIn">
+        <h3>{{message}}</h3>
+    </div>
+    <div class="list" ng-if="showWishlist">
+        <div ng-repeat="item in wishlist">
+            <div class="row">
+            <div class="col col-10"><a>
+                <h4><i class="icon ion-trash-a" ng-click="removeFromWishlist(item)"></i></h4></a>
+            </div>
+            <div>
+            <div class="col col-90">
+            <a class="item item-avatar" ui-sref="app.productdetail({id: item.productId})">
+                <img ng-src={{item.product.image}}>
+                <h4>{{item.product.name}}</h4>
+                <p>{{item.product.unitprice | currency:"R"}}</p>
+                <p>{{item.product.description}}</p>
+            </a>
+            </div>
+            </div>
+            </div>
+        </div>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,32 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-calm">
+    <h1 class="title">Add a review</h1>
+    <div class="buttons">
+      <button class="button button-light" ng-click="closeReviewForm()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form name="reviewForm" ng-submit="submitComment()" novalidate>
+        <ion-list>
+            <label class="item item-input item-select">
+            <div class="input-label">
+                Number of Stars
+            </div>
+            <select ngModel="newcomment.rating">
+                <option>5</option>
+                <option>4</option>
+                <option>3</option>
+                <option>2</option>
+                <option>1</option>
+            </select>
+            </label>
+            <label class="item item-input">
+                <textarea type="text" ng-model="newcomment.review" placeholder="Enter comments here" required>></textarea>
+            </label>
+            <ion-item>
+                <button class="button button-block button-calm" ng-disabled="reviewForm.$invalid" type="submit">Submit</button>
+            </ion-item>
+        </ion-list>
+    </form>
+  </ion-content>
+</ion-modal-view>
